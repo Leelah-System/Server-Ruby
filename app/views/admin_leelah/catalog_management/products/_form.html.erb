@@ -1,0 +1,52 @@
+
+<%= form_for([:admin_leelah, :catalog_management, @product], :html => { :class => "horizontal_form"} ) do |product_form| %>
+
+    <% if @product.errors.any? %>
+    <div class="error">
+        <p><%= t('.error.message', :count => @product.errors.count) %></p>
+
+        <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <fieldset>
+        <legend><%= @product.name %></legend>
+        <ul>
+
+            <li>
+                <%= product_form.label      :name %>
+                <%= product_form.text_field :name, :disabled => show_product? %>
+            </li>
+
+            <li>
+                <%= product_form.label      :description %>
+                <%= product_form.text_area  :description, :disabled => show_product?, :rows => 6 %>
+            </li>
+
+            <li>
+                <%= product_form.label          :price %>
+                <%= product_form.number_field   :price, :disabled => show_product?, :step => "0.01" %>
+            </li>
+
+            <li>
+                <%= product_form.label          :stock %>
+                <%= product_form.number_field   :stock, :disabled => show_product? %>
+            </li>
+
+            <li>
+                <%= product_form.label              :category %>
+                <%= product_form.collection_select  :category_id, Category.all, :id, :name, {}, :disabled => show_product? %>
+            </li>
+
+        </ul>
+    </fieldset>
+
+    <fieldset class="fieldsetbuttons">
+        <%= product_form.submit(:class => "grey styled_button") if not show_product? %>
+    </fieldset>
+
+<% end %>

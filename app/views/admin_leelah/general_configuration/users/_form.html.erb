@@ -1,0 +1,56 @@
+
+<%= form_for([:admin_leelah, :general_configuration, @user], :html => { :class => "horizontal_form"} ) do |user_form| %>
+
+    <% if @user.errors.any? %>
+    <div class="error">
+        <p><%= t('.error.message', :count => @user.errors.count) %></p>
+
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <fieldset>
+        <ul>
+
+            <li>
+                <%= user_form.label      :login %>
+                <%= user_form.text_field :login, :disabled => show_user? %>
+            </li>
+
+            <li>
+                <%= user_form.label      :password %>
+                <%= user_form.text_field :password, :disabled => show_user? %>
+            </li>
+
+            <li>
+                <%= user_form.label      :email %>
+                <%= user_form.text_field :email, :disabled => show_user? %>
+            </li>
+
+            <li>
+                <%= user_form.label      :first_name %>
+                <%= user_form.text_field :first_name, :disabled => show_user? %>
+            </li>
+
+            <li>
+                <%= user_form.label      :last_name %>
+                <%= user_form.text_field :last_name, :disabled => show_user? %>
+            </li>
+
+            <li>
+                <%= user_form.label              :status %>
+                <%= user_form.collection_select  :status, User::STATUS_LIST, :id, :name, {}, :disabled => show_user? %>
+            </li>
+
+        </ul>
+    </fieldset>
+
+    <fieldset class="fieldsetbuttons">
+        <%= user_form.submit(:class => "grey styled_button") if not show_user? %>
+    </fieldset>
+
+<% end %>

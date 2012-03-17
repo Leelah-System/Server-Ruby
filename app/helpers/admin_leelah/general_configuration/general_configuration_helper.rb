@@ -1,0 +1,2 @@
+module AdminLeelah::GeneralConfiguration::GeneralConfigurationHelper
+end

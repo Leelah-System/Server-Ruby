@@ -1,0 +1,36 @@
+
+<h3><%= t('.title') %></h3>
+
+<!-- CATEGORY PANEL -->
+<table class="plain leelah_table">
+
+    <thead>
+        <tr>
+            <th><%= t('.table.header.name') %></th>
+            <th><%= t('.table.header.description') %></th>
+            <th><%= t('.table.header.actions') %></th>
+        </tr>
+    </thead>
+
+    <% @categories.each do |category| %>
+    <tbody>
+        <tr>
+            <th><%= category.name %></th>
+            <th><%= category.description.truncate(40) %></th>
+            <th class="leelah_actions">
+                <%= link_to image_tag('notjustagrid/icons/icon-view.png'), admin_leelah_catalog_management_category_path(category) %>
+                <%= link_to link_to image_tag('notjustagrid/icons/icon-edit.png'), edit_admin_leelah_catalog_management_category_path(category) %>
+                <%= button_to "", admin_leelah_catalog_management_category_path(category), :method => :delete, :class => "leelah_button_delete" %>
+            </th>
+        </tr>
+    </tbody>
+    <% end %>
+
+</table>
+<!-- END CATEGORY PANEL -->
+
+<%= link_to t('.link.create'), new_admin_leelah_catalog_management_category_path %>
+
+<!-- CATEGORY FORM -->
+<%= render 'form' if @show_form %>
+<!-- END CATEGORY FORM -->

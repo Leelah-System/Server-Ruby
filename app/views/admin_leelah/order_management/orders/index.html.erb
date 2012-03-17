@@ -1,0 +1,32 @@
+
+<h3><%= t('.title') %></h3>
+
+<!-- ORDER PANEL -->
+<table class="plain leelah_table">
+
+    <thead>
+        <tr>
+            <th><%= t('.table.header.reference') %></th>
+            <th><%= t('.table.header.status') %></th>
+            <th><%= t('.table.header.nb_products') %></th>
+            <th><%= t('.table.header.actions') %></th>
+        </tr>
+    </thead>
+
+    <% @orders.each do |order| %>
+    <tbody>
+        <tr>
+            <th><%= order.reference %></th>
+            <th><%= order.status_to_string %></th>
+            <th><%= order.nb_products %></th>
+            <th><%= link_to image_tag("notjustagrid/icons/icon-view.png"), admin_leelah_order_management_order_path(order) %></th>
+        </tr>
+    </tbody>
+    <% end %>
+
+</table>
+<!-- END ORDER PANEL -->
+
+<!-- ORDER DETAIL -->
+<%= render 'detail' if @show_detail %>
+<!-- END ORDER DETAIL -->

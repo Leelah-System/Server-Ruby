@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leelah-System Administration</title>
+
+    <!-- NOT JUST A GRID CSS FRAMEWORK -->
+    <%= stylesheet_link_tag 'notjustagrid/css/reset' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/grid960' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/helpers' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/type' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/forms' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/ux' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/tables' %>
+    <!-- END NOT JUST A GRID CSS FRAMEWORK -->
+
+    <%= stylesheet_link_tag 'application' %>
+
+    <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="container">
+    <%= render  'admin_leelah/header' %>
+
+    <%= render  'admin_leelah/menu' if display_menu? %>
+
+    <%= render  'admin_leelah/sub_menu' if display_sub_menu? %>
+
+<!-- CONTENT YIELD -->
+    <div class="threequarter">
+        <%= render  'admin_leelah/flash_message' %>
+
+        <%= yield %>
+    </div>
+<!-- END CONTENT YIELD -->
+</div>
+
+
+</body>
+</html>

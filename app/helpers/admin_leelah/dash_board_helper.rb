@@ -1,0 +1,2 @@
+module AdminLeelah::DashBoardHelper
+end

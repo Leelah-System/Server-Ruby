@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leelah-System Server - Connexion</title>
+
+    <!-- NOT JUST A GRID CSS FRAMEWORK -->
+    <%= stylesheet_link_tag 'notjustagrid/css/reset' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/grid960' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/helpers' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/type' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/forms' %>
+    <%= stylesheet_link_tag 'notjustagrid/css/ux' %>
+    <!-- END NOT JUST A GRID CSS FRAMEWORK -->
+
+    <%= csrf_meta_tag %>
+</head>
+
+<body>
+
+<div id="container">
+
+    <div class="full text_center">
+        <%= image_tag("Logo_leelah_system.png", :size => '800x300') %>
+        <h1 class="hiddentext">Leelah-Server</h1>
+    </div>
+
+    <div class="quarter hiddentext">centrer formulaire login</div>
+    <div class="half">
+        <%= render  'admin_leelah/flash_message' %>
+        <%= yield %>
+    </div>
+</div>
+
+</body>
+</html>

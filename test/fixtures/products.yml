@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reference: MyString
+  label: MyString
+  name: MyString
+  description: MyText
+  price: 1.5
+  stock: 1.5
+  logo: 
+  category: 
+
+two:
+  reference: MyString
+  label: MyString
+  name: MyString
+  description: MyText
+  price: 1.5
+  stock: 1.5
+  logo: 
+  category: 

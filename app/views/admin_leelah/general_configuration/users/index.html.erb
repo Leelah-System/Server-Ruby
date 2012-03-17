@@ -1,0 +1,36 @@
+
+<h3><%= t('.title') %></h3>
+
+<!-- USER PANEL -->
+<table class="plain leelah_table">
+
+    <thead>
+        <tr>
+            <th><%= t('.table.header.name') %></th>
+            <th><%= t('.table.header.status') %></th>
+            <th><%= t('.table.header.actions') %></th>
+        </tr>
+    </thead>
+
+    <% @users.each do |user| %>
+    <tbody>
+        <tr>
+            <th><%= user.name %></th>
+            <th><%= user.status_to_string %></th>
+            <th class="leelah_actions">
+                <%= link_to link_to image_tag('notjustagrid/icons/icon-view.png'), admin_leelah_general_configuration_user_path(user) %>
+                <%= link_to link_to image_tag('notjustagrid/icons/icon-edit.png'), edit_admin_leelah_general_configuration_user_path(user) %>
+                <%= button_to "", admin_leelah_general_configuration_user_path(user), :method => :delete, :class => "leelah_button_delete" %>
+            </th>
+        </tr>
+    </tbody>
+    <% end %>
+
+</table>
+<!-- END USER PANEL -->
+
+<%= link_to t('.link.create'), new_admin_leelah_general_configuration_user_path %>
+
+<!-- USER FORM -->
+<%= render 'form' if @show_form %>
+<!-- END USER FORM -->

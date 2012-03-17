@@ -1,0 +1,15 @@
+
+<!-- HEADER -->
+<div class="full">
+
+    <!-- LOGO -->
+    <%= image_tag('trefle.png', :alt => "rails", :size => '300x150') %>
+
+    <!-- LOGOUT -->
+    <p><%= link_to t('.link.logout'), admin_leelah_logout_path %></p>
+
+    <!-- TODAY DATE -->
+    <p><%= l(Time.now, :format => :long) %></p>
+
+</div>
+<!-- END HEADER -->

@@ -1,0 +1,22 @@
+
+<h4><%= t('.title') + @order.reference %></h4>
+
+<table class="datalist leelah_table">
+
+    <thead>
+        <tr>
+            <th><%= t('.table.header.product') %></th>
+            <th><%= t('.table.header.quantity') %></th>
+        </tr>
+    </thead>
+
+    <% @order.order_lines.each do |order_line| %>
+    <tbody>
+        <tr>
+            <th><%= link_to order_line.product.name, admin_leelah_catalog_management_product_path(order_line.product) %></th>
+            <th><%= order_line.quantity %></th>
+        </tr>
+    </tbody>
+    <% end %>
+
+</table>

@@ -1,0 +1,36 @@
+
+<%= form_for([:admin_leelah, :catalog_management, @category], :html => { :class => "horizontal_form"} ) do |category_form| %>
+
+    <% if @category.errors.any? %>
+    <div class="error">
+        <p><%= t('.error.message', :count => @category.errors.count) %></p>
+
+        <ul>
+            <% @category.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <fieldset>
+        <ul>
+
+            <li>
+                <%= category_form.label :name %>
+                <%= category_form.text_field :name, :disabled => show_category? %>
+            </li>
+
+            <li>
+                <%= category_form.label :description %>
+                <%= category_form.text_area :description, :disabled => show_category?  %>
+            </li>
+
+        </ul>
+    </fieldset>
+
+    <fieldset class="fieldsetbuttons">
+        <%= category_form.submit(:class => "grey styled_button") if not show_category? %>
+    </fieldset>
+
+<% end %>

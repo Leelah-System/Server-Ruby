@@ -1,0 +1,42 @@
+
+<h3><%= t('.title') %></h3>
+
+<!-- PRODUCT PANEL -->
+<table class="plain leelah_table">
+
+    <thead>
+        <tr>
+            <th><%= t('.table.header.name') %></th>
+            <th><%= t('.table.header.description') %></th>
+            <th><%= t('.table.header.price') %></th>
+            <th><%= t('.table.header.stock') %></th>
+            <th><%= t('.table.header.category') %></th>
+            <th><%= t('.table.header.actions') %></th>
+        </tr>
+    </thead>
+
+    <% @products.each do |product| %>
+    <tbody>
+        <tr>
+            <th><%= product.name %></th>
+            <th><%= product.description.truncate(40) %></th>
+            <th><%= product.price %></th>
+            <th><%= product.stock %></th>
+            <th><%= product.category.name %></th>
+            <th class="leelah_actions">
+                <%= link_to image_tag('notjustagrid/icons/icon-view.png'), admin_leelah_catalog_management_product_path(product) %>
+                <%= link_to image_tag('notjustagrid/icons/icon-edit.png'), edit_admin_leelah_catalog_management_product_path(product) %>
+                <%= button_to "", admin_leelah_catalog_management_product_path(product), :method => :delete, :class => "leelah_button_delete" %>
+            </th>
+        </tr>
+    </tbody>
+    <% end %>
+
+</table>
+<!-- END PRODUCT PANEL -->
+
+<%= link_to t('.link.create'), new_admin_leelah_catalog_management_product_path %>
+
+<!-- PRODUCT FORM -->
+<%= render 'form' if @show_form %>
+<!-- END PRODUCT FORM -->

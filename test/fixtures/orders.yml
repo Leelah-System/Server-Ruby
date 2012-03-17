@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reference: MyString
+  amount: 1.5
+  status: 1
+  user: 
+
+two:
+  reference: MyString
+  amount: 1.5
+  status: 1
+  user: 
