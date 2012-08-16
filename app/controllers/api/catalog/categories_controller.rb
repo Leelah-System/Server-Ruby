@@ -11,7 +11,7 @@ class Api::Catalog::CategoriesController < Api::ApiController
   # ====Result:
   # * "+collection of Categories+"
   def index
-    categories = Category.joins(:products).includes(:products).all
+    categories = Category.includes(:products, :picture).all
 
     if categories
       response = formatted_response(true, {:categories => categories}, t('api.message.catalog.categories.index.success'))
@@ -36,7 +36,7 @@ class Api::Catalog::CategoriesController < Api::ApiController
   # ====Result:
   # * "+Category+"
   def show
-    category = Category.joins(:products).find(params[:id])
+    category = Category.includes(:products, :picture).find(params[:id])
 
     if category
       response = formatted_response(true, category, t('api.message.catalog.categories.show.success'))

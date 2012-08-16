@@ -11,7 +11,7 @@ class Api::Catalog::ProductsController < Api::ApiController
   # ====Result:
   # * "+collection of Products+"
   def index
-    products = Product.joins(:category).includes(:category).all
+    products = Product.includes(:category, :picture).all
 
     if products
       response = formatted_response(true, {:products => products}, t('api.message.catalog.products.index.success'))
@@ -36,7 +36,7 @@ class Api::Catalog::ProductsController < Api::ApiController
   # ====Result:
   # * "+Product+"
   def show
-    product = Product.joins(:category).includes(:category).find(params[:id])
+    product = Product.includes(:category, :picture).find(params[:id])
 
     if product
       response = formatted_response(true, product, t('api.message.catalog.products.show.success'))

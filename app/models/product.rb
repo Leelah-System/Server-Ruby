@@ -5,6 +5,9 @@ class Product < ActiveRecord::Base
   #===========================================================================#
   belongs_to  :category
   has_many    :order_lines
+  has_one     :picture, :as => :imageable
+
+  accepts_nested_attributes_for :category,  :picture
 
   #===========================================================================#
   #===   VALIDATIONS
@@ -24,6 +27,9 @@ class Product < ActiveRecord::Base
     super(
         :include => {
           :category => {
+            :except => [:created_at, :updated_at]
+          },
+          :picture => {
             :except => [:created_at, :updated_at]
           }
         },
