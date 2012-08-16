@@ -15,7 +15,6 @@ class Product < ActiveRecord::Base
   #===========================================================================#
   #===   CALLBACKS
   #===========================================================================#
-  before_validation :create_reference
 
   #===========================================================================#
   #===   PUBLIC
@@ -37,8 +36,5 @@ class Product < ActiveRecord::Base
   #===========================================================================#
   protected
 
-  def create_reference
-    self.reference = SecureRandom.random_number(1000000)
-  end
 
 end

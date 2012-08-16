@@ -1,7 +1,5 @@
 LeelahSystemServer::Application.routes.draw do
-
-  get "orders/index"
-
+=begin
   # Admin part "/admin_leelah/..."
   namespace :admin_leelah, :defaults => { :format => "html" } do
     root  :to => "dash_board#index"
@@ -47,6 +45,7 @@ LeelahSystemServer::Application.routes.draw do
     end
 
   end
+=end
 
   # API part => "/api/..."
   namespace :api, :defaults => {:format => "json"} do
@@ -75,5 +74,4 @@ LeelahSystemServer::Application.routes.draw do
     end
 
   end
-
 end
