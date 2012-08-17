@@ -130,10 +130,11 @@ class Api::Catalog::ProductsController < Api::ApiController
   protected
 
   def get_products_with_request
+    products = nil
     errors = []
 
     # test si un "scope" est passé en paramètres
-    if defined? params[:scope] then
+    if params[:scope] then
       begin
         scope = params[:scope]
 
