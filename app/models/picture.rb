@@ -8,7 +8,7 @@ class Picture < ActiveRecord::Base
   before_save :save_image
 
   def save_image
-      if (self.data_picture)
+      if not self.data_picture.nil?
         binary_data = Base64.decode64(self.data_picture)
 
         filename  = self.label + "-" + rand(10000..99999).to_s
