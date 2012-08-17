@@ -161,6 +161,9 @@ class Api::Catalog::ProductsController < Api::ApiController
             errors << t('api.message.catalog.products.index.errors.no_price')
           end
 
+        # "scope" sans champs particuliers à renseigner
+        else
+          products = Product.send(scope).with_category_and_picture
         end
 
       # "scope" non trouvé
