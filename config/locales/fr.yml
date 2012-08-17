@@ -205,6 +205,9 @@ fr:
           index:
             success:  TODO
             failure:  TODO
+            errors:
+              no_text:  Aucun paramètre "text" renseigné
+              no_price: Aucun paramètre "min_price" ou "max_price" renseigné
 
           show:
             success:  TODO
