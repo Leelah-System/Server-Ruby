@@ -38,7 +38,7 @@ class Api::Catalog::ProductsController < Api::ApiController
   # ====Result:
   # * "+Product+"
   def show
-    product = Product.includes(:category, :picture).find(params[:id])
+    product = Product.with_category_and_picture.find(params[:id])
 
     if product
       response = formatted_response(true, product, t('api.message.catalog.products.show.success'))

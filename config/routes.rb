@@ -68,8 +68,8 @@ LeelahSystemServer::Application.routes.draw do
         resources :categories,  :only => [:index, :show, :create, :update, :destroy]
       end
 
-      # Orders "/api/:token/catalog/orders..."
-      resources :orders,  :only => [:index]
+      # Orders "/api/:token/orders..."
+      resources :orders,  :only => [:index, :show, :create, :update, :destroy]
 
     end
 

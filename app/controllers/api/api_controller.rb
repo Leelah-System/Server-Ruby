@@ -33,7 +33,7 @@ class Api::ApiController < ApplicationController
   def require_token
     user = User.find_by_token(params[:token])
     if user
-      @_current_user = user.id
+      @_current_user = user
     else
       respond_to do |format|
         format.json { render :json => formatted_response(false, nil, t('api.request.unauthorized')), :status => :unauthorized }

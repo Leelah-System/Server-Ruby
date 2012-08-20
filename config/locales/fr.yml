@@ -253,6 +253,22 @@ fr:
           success:  TODO
           failure:  TODO
 
+        show:
+          success:  TODO
+          failure:  TODO
+
+        create:
+          success:  TODO
+          failure:  TODO
+
+        update:
+          success:  TODO
+          failure:  TODO
+
+        destroy:
+          success:  TODO
+          failure:  TODO
+
   #============================================================================
   #=== ACTIVE RECORD
   #============================================================================
