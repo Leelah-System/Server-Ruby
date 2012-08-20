@@ -55,23 +55,24 @@ class Order < ActiveRecord::Base
   end
 
   def status_to_string
-    STATUS_LIST[self.status].name
+    STATUS_LIST[self.status].name if self.status
   end
 
   def as_json(options={})
     super(
-        :include => {
-          :user => {
-            :except => [:password, :salt, :token, :created_at, :updated_at]
+      :include => {
+        :user => {
+          :except => [:password, :salt, :token, :created_at, :updated_at]
+        },
+        :order_lines => {
+          :include => {
+              :product => {
+                :except => [:logo_id, :created_at, :updated_at]
+              }
           },
-          :order_lines => {
-            :include => {
-                :product => {
-                  :except => [:logo_id, :created_at, :updated_at]
-                }
-            },
-          }
         }
+      },
+      :methods => [:status_to_string]
     )
   end
 

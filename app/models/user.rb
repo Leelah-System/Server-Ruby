@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def status_to_string
-    STATUS_LIST[self.status].name
+    STATUS_LIST[self.status].name if self.status
   end
 
   def as_json(options={})
