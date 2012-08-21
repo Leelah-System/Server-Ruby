@@ -1,4 +1,12 @@
 LeelahSystemServer::Application.routes.draw do
+  get "company/index"
+
+  get "company/create"
+
+  get "company/update"
+
+  get "company/destroy"
+
 =begin
   # Admin part "/admin_leelah/..."
   namespace :admin_leelah, :defaults => { :format => "html" } do
@@ -51,9 +59,9 @@ LeelahSystemServer::Application.routes.draw do
   namespace :api, :defaults => {:format => "json"} do
 
     # Authentication "/api/authenticate"
-    match "authenticate" => "user#authenticate", :via => :post
+    match "authenticate" => "users#authenticate", :via => :post
     # Sign up "/api/sign_up"
-    match "sign_up" => "user#sign_up", :via => :post
+    match "sign_up" => "users#sign_up", :via => :post
 
     # Actions need to authenticate with "token" "/api/:token/..."
     scope "/:token" do
@@ -70,6 +78,12 @@ LeelahSystemServer::Application.routes.draw do
 
       # Orders "/api/:token/orders..."
       resources :orders,  :only => [:index, :show, :create, :update, :destroy]
+
+      # Users "/api/:token/users..."
+      resources :users,  :only => [:index, :show, :create, :update, :destroy]
+
+      # Company "/api/:token/company..."
+      resources :company,  :only => [:index, :create, :update, :destroy]
 
     end
 

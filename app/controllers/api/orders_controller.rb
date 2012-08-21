@@ -11,12 +11,12 @@ class Api::OrdersController < Api::ApiController
   # ====Result:
   # * "+collection of Orders+"
   def index
-    orders = Order.with_products_and_user
+    orders, errors = get_orders_with_request
 
     if orders
       response = formatted_response(true, {:orders => orders}, t('api.message.orders.index.success'))
     else
-      response = formatted_response(false, nil, t('api.message.orders.index.failure'))
+      response = formatted_response(false, {:errors => errors}, t('api.message.orders.index.failure'))
     end
 
     render :json => response
@@ -70,6 +70,46 @@ class Api::OrdersController < Api::ApiController
     end
 
     render :json => response
+  end
+
+  def get_orders_with_request
+    orders = nil
+    errors = []
+
+    # test si un "scope" est passé en paramètres
+    if params[:scope] then
+      begin
+        scope = params[:scope]
+
+        # recherche par rapport à un texte
+        if scope == "with_status"
+          status = params[:status]
+          if status
+            orders = Order.with_status(status).with_products_and_user
+          else
+            errors << t('api.message.orders.index.errors.no_status')
+          end
+
+        # "scope" sans champs particuliers à renseigner
+        else
+          orders = Order.send(scope).with_products_and_user
+        end
+
+      # "scope" non trouvé
+      rescue NoMethodError => e
+        errors << e.to_s.split(" for")[0]
+
+      # erreur générique
+      rescue Exception => e
+        errors << e.to_s
+      end
+
+    # sans "scope" => tous les produits
+    else
+      orders = Order.with_products_and_user
+    end
+
+    return orders, errors
   end
 
 end

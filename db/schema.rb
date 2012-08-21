@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317000949) do
+ActiveRecord::Schema.define(:version => 20120821135617) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "name"
+    t.string   "street_number"
+    t.string   "street"
+    t.string   "additional_address"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "country"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "addresses", ["addressable_id"], :name => "index_addresses_on_addressable_id"
 
   create_table "categories", :force => true do |t|
     t.string   "label"
@@ -20,6 +36,33 @@ ActiveRecord::Schema.define(:version => 20120317000949) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "subname"
+    t.text     "activity"
+    t.string   "legal_form"
+    t.text     "registration_number"
+    t.integer  "head_office_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "companies", ["head_office_id"], :name => "index_companies_on_head_office_id"
+
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "cellphone"
+    t.string   "fax"
+    t.integer  "contactable_id"
+    t.string   "contactable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "contacts", ["contactable_id"], :name => "index_contacts_on_contactable_id"
 
   create_table "order_lines", :force => true do |t|
     t.integer  "order_id"

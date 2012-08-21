@@ -7,7 +7,6 @@ one:
   description: MyText
   price: 1.5
   stock: 1.5
-  logo: 
   category: 
 
 two:
@@ -17,5 +16,4 @@ two:
   description: MyText
   price: 1.5
   stock: 1.5
-  logo: 
   category: 

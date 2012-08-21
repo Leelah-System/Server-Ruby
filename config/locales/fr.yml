@@ -187,8 +187,8 @@ fr:
 
     message:
 
-      # USER
-      user:
+      # USERS
+      users:
         sign_up:
           success:  Inscription réussie
           failure:  Inscription échouée
@@ -196,6 +196,26 @@ fr:
         authenticate:
           success:  Authentification réussie
           failure:  Authentification échouée
+
+        index:
+          success:  TODO
+          failure:  TODO
+
+        show:
+          success:  TODO
+          failure:  TODO
+
+        create:
+          success:  TODO
+          failure:  TODO
+
+        update:
+          success:  TODO
+          failure:  TODO
+
+        destroy:
+          success:  TODO
+          failure:  TODO
 
       # CATALOG
       catalog:
@@ -252,6 +272,8 @@ fr:
         index:
           success:  TODO
           failure:  TODO
+          errors:
+            no_status:  Aucun paramètre "status" renseigné
 
         show:
           success:  TODO
@@ -269,6 +291,24 @@ fr:
           success:  TODO
           failure:  TODO
 
+      # COMPANY
+      company:
+        index:
+          success:  TODO
+          failure:  TODO
+
+        create:
+          already_exists: La société est déja créée
+          success:        TODO
+          failure:        TODO
+
+        update:
+          success:  TODO
+          failure:  TODO
+
+        destroy:
+          success:  TODO
+          failure:  TODO
   #============================================================================
   #=== ACTIVE RECORD
   #============================================================================

@@ -32,7 +32,9 @@ class Order < ActiveRecord::Base
   #===========================================================================#
   #===   SCOPES
   #===========================================================================#
-  scope :with_products_and_user, includes(:user, :order_lines => [:product])
+  scope :with_products_and_user,  includes(:user, :order_lines => [:product])
+
+  scope :with_status,             lambda { |status| where(:status => status)  }
 
   #===========================================================================#
   #===   CALLBACKS
@@ -58,10 +60,10 @@ class Order < ActiveRecord::Base
     STATUS_LIST[self.status].name if self.status
   end
 
-  def as_json(options={})
-    super(
+  JSON_WITH_USER_AND_PRODUCTS = {
       :include => {
         :user => {
+          :methods  => [:name, :status_to_string],
           :except => [:password, :salt, :token, :created_at, :updated_at]
         },
         :order_lines => {
@@ -73,7 +75,10 @@ class Order < ActiveRecord::Base
         }
       },
       :methods => [:status_to_string]
-    )
+  }
+
+  def as_json(options={})
+    super(JSON_WITH_USER_AND_PRODUCTS)
   end
 
   #===========================================================================#

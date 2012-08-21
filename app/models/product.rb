@@ -46,18 +46,21 @@ class Product < ActiveRecord::Base
   #===   PUBLIC
   #===========================================================================#
 
-  def as_json(options={})
-    super(
-        :include => {
-          :category => {
-            :except => [:created_at, :updated_at]
-          },
-          :picture => {
-            :except => [:created_at, :updated_at]
-          }
+  JSON_WITH_CATEGORY_AND_PICTURE = {
+      :include => {
+        :category => {
+          :except => [:created_at, :updated_at]
         },
-        :except => [:logo_id, :created_at, :updated_at]
-    )
+        :picture => {
+          :except => [:created_at, :updated_at]
+        }
+      },
+      :except => [:logo_id, :created_at, :updated_at]
+
+  }
+
+  def as_json(options={})
+    super(JSON_WITH_CATEGORY_AND_PICTURE)
   end
 
   #===========================================================================#

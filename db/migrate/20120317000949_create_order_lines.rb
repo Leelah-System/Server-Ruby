@@ -1,7 +1,7 @@
 class CreateOrderLines < ActiveRecord::Migration
   def change
     create_table :order_lines do |t|
-      t.references :orders
+      t.references :order
       t.references :product
       t.integer :quantity
       t.float :amount

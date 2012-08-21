@@ -53,8 +53,23 @@ class User < ActiveRecord::Base
     STATUS_LIST[self.status].name if self.status
   end
 
+  JSON_USER_SIMPLE = {
+      :methods  => [:name, :status_to_string],
+      :except   => [:password, :salt, :created_at, :updated_at]
+  }
+
+  JSON_USER_WITH_ORDERS = {
+      :methods  => [:name, :status_to_string],
+      :include  => {
+        :orders => {
+            :methods => [:status_to_string]
+        }
+      },
+      :except   => [:password, :salt, :created_at, :updated_at]
+  }
+
   def as_json(options={})
-    super(:except => [:password, :salt, :created_at, :updated_at])
+    super(options)
   end
 
   # Static method to verify if user can authenticate with login and password
