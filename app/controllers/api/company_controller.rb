@@ -30,10 +30,19 @@ class Api::CompanyController < Api::ApiController
   end
 
   def update
+    company = Company.first
+
+    if company.update_attributes(params[:company])
+      response = formatted_response(true, company, t('api.message.company.update.success'))
+    else
+      response = formatted_response(false, company.errors, t('api.message.company.update.failure'))
+    end
+
+    render :json => response
   end
 
   def destroy
-    company = Company.find(params[:id])
+    company = Company.first
 
     if company.destroy
       response = formatted_response(true, nil, t('api.message.company.destroy.success'))
