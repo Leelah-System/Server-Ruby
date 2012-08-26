@@ -1,9 +1,9 @@
-require 'open-uri'
+#require 'open-uri'
 
 # Users creation
 User.delete_all
 nb_users = 0
-open("http://doc.leelah-system.com/base/restaurant1/users.csv") do |users|
+open("http://doc.leelah-system.com/base/restaurant1/users.txt") do |users|
   users.read.each_line do |user|
     if nb_users == 0
       # Do not insert the first line
@@ -20,7 +20,7 @@ puts "Users created: #{users.size} user(s)"
 # Categories creation
 Category.delete_all
 nb_categories = 0
-open("http://doc.leelah-system.com/base/restaurant1/categories.csv") do |categories|
+open("http://doc.leelah-system.com/base/restaurant1/categories.txt") do |categories|
   categories.read.each_line do |category|
     if nb_categories == 0
       # Do not insert the first line
@@ -37,7 +37,7 @@ puts "Categories created: #{categories.size} categories"
 # Products creation
 Product.delete_all
 nb_products = 0
-open("http://doc.leelah-system.com/base/restaurant1/products.csv") do |products|
+open("http://doc.leelah-system.com/base/restaurant1/products.txt") do |products|
   products.read.each_line do |product|
     if nb_products == 0
       # Do not insert the first line
