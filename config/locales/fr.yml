@@ -374,28 +374,28 @@ fr:
         product:
           attributes:
             name:
-              blank:                    TODO
+              blank:                    Le nom du produit doit être renseigné
             price:
-              blank:                    TODO
-              not_a_number:             TODO
-              greater_than_or_equal_to: TODO
+              blank:                    Le prix du produit doit être renseigné
+              not_a_number:             Le prix du produit doit être un nombre
+              greater_than_or_equal_to: Le prix du produit doit être supérieur à %{count}
             stock:
-              blank:                    TODO
-              not_a_number:             TODO
-              greater_than_or_equal_to: TODO
+              blank:                    Le stock du produit doit être renseigné
+              not_a_number:             Le stock du produit doit être un nombre
+              greater_than_or_equal_to: Le stock du produit doit être supérieur à %{count}
 
         user:
           attributes:
             first_name:
-              blank:    TODO
+              blank:    Le prénom de l'utilisateur doit être renseigné
             last_name:
-              blank:    TODO
+              blank:    Le nom de l'utilisateur doit être renseigné
             login:
-              blank:    TODO
+              blank:    L'identifiant de l'utilisateur doit être renseigné
             password:
-              blank:    TODO
+              blank:    Le mot de passe de l'utilisateur doit être renseigné
             email:
-              blank:    TODO
+              blank:    L'adresse eMail de l'utilisateur doit être renseigné
               invalid:  TODO
 
   #============================================================================
