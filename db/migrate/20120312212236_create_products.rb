@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.float :price
       t.float :stock
       t.references :logo
-      t.references :categories
+      t.references :category
 
       t.timestamps
     end
