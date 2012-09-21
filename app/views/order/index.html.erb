@@ -1,0 +1,44 @@
+<div id="orders_list">
+    <% @orders.each do |order| %>
+    <div id="<%= order.reference %>" class="alert">
+        <h3 class="lead"><%= order.reference %></h3>
+        <ul>
+        <% order.order_lines.each do |order_line| %>
+            <li class="lead"><%= order_line.product.name %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+</div>
+
+<script type="text/javascript">
+    window.setInterval(get_last_orders, 2000);
+
+    function get_last_orders() {
+
+        $.ajax({
+            type: "GET",
+            url: "last",
+            dataType: 'json',
+            success: function(data) {
+
+                var objet = eval(data);
+
+                objet.forEach (function(order) {
+
+                    if ( $('#' + order.reference).length == 0 ) {
+                        str = '<div id="' + order.reference + '"  class="alert"><h3 class="lead">' + order.reference + '</h3><ul>';
+                        order.order_lines.forEach(function(order_line) {
+                            str = str + '<li class="lead">' + order_line.product.name + '</li>'
+                        });
+                        str = str + '</ul></div>'
+
+                        $('#orders_list').prepend(str)
+                    }
+                });
+            }
+        });
+
+
+    }
+</script>

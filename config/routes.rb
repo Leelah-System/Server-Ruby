@@ -1,11 +1,12 @@
 LeelahSystemServer::Application.routes.draw do
-  get "company/index"
 
-  get "company/create"
+  get "order/index"
 
-  get "company/update"
+  get "order/last"
 
-  get "company/destroy"
+  root  :to => "orders#index"
+
+
 
 =begin
   # Admin part "/admin_leelah/..."
