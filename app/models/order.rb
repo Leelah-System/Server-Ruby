@@ -87,7 +87,28 @@ class Order < ActiveRecord::Base
   protected
 
   def create_reference
-    self.reference = SecureRandom.random_number(1000000) unless self.reference
+    lastOrder = Order.last
+    now = Time.new
+    day_now = "%05d" % now.yday
+
+    if lastOrder
+      split_ref = lastOrder.reference.split("-")
+      # same day
+      if split_ref[1] == day_now
+        last_num = split_ref[2].to_i
+        last_num += 1
+        self.reference = "%05d" % now.year + "-" + day_now + "-" + "%05d" % last_num
+      # new day
+      else
+        self.reference = "%05d" % now.year + "-" + day_now + "-" + "%05d" % 1
+      end
+    else
+      # first order
+      self.reference = "%05d" % now.year + "-" + day_now + "-" + "%05d" % 1
+    end
+
+    puts self.reference
+
   end
 
   def remove_duplicate_products
